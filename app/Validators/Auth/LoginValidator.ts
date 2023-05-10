@@ -9,7 +9,6 @@ export default class LoginValidator {
       rules.required(),
       rules.email(),
       rules.maxLength(255),
-      rules.unique({table: 'users', column: 'email'})
     ]),
     password: schema.string({trim: true},[
       rules.required(),
@@ -21,7 +20,6 @@ export default class LoginValidator {
     'email.required': 'Email is required to login',
     'email.email': 'Email is not valid',
     'email.maxLength': 'Email is too long',
-    'email.unique': 'Email is already registered',
     'password.required': 'Password is required to login',
     'password.maxLength': 'Password is too long'
   }

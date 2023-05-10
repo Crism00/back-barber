@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import LoginValidator from 'App/Validators/Auth/LoginValidator'
+import RegisterValidator from 'App/Validators/Auth/RegisterValidator'
 import Database from '@ioc:Adonis/Lucid/Database'
 import Env from '@ioc:Adonis/Core/Env'
 
@@ -44,6 +45,7 @@ export default class AuthController
 
   public async register({ request, response } : HttpContextContract)
   {
+    await request.validate(RegisterValidator)
     const userData = request.only(User.store)
     try
     {
